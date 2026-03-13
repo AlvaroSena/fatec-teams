@@ -36,7 +36,7 @@ export class SubmitLessonUseCase {
       return left(new LessonNotFoundError());
     }
 
-    const newSubmission = Submission.craete({
+    const newSubmission = Submission.create({
       studentId: student.id,
       lessionId: lesson.id,
       submittedAt: new Date(),

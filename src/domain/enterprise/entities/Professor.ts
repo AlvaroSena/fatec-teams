@@ -9,7 +9,7 @@ type ProfessorProps = {
 };
 
 export class Professor extends Entity<ProfessorProps> {
-  static craete(props: ProfessorProps, id?: UniqueEntityId) {
+  static create(props: ProfessorProps, id?: UniqueEntityId) {
     const professor = new Professor(props, id);
 
     return professor;

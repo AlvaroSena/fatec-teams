@@ -10,7 +10,7 @@ type LessonFileProps = {
 };
 
 export class LessonFile extends Entity<LessonFileProps> {
-  static craete(props: LessonFileProps, id?: UniqueEntityId) {
+  static create(props: LessonFileProps, id?: UniqueEntityId) {
     const lessonfile = new LessonFile(props, id);
 
     return lessonfile;

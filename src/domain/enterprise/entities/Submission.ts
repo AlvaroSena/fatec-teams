@@ -10,7 +10,7 @@ type SubmissionProps = {
 };
 
 export class Submission extends Entity<SubmissionProps> {
-  static craete(props: SubmissionProps, id?: UniqueEntityId) {
+  static create(props: SubmissionProps, id?: UniqueEntityId) {
     const submission = new Submission(props, id);
 
     return submission;

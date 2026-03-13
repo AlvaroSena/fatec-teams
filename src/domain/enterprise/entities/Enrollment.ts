@@ -7,7 +7,7 @@ type EnrollmentProps = {
 };
 
 export class Enrollment extends Entity<EnrollmentProps> {
-  static craete(props: EnrollmentProps, id?: UniqueEntityId) {
+  static create(props: EnrollmentProps, id?: UniqueEntityId) {
     const enrollment = new Enrollment(props, id);
 
     return enrollment;

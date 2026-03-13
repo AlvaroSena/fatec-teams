@@ -31,7 +31,7 @@ export class CreateLessonUseCase {
       return left(new ProfessorNotFoundError());
     }
 
-    const newLesson = Lesson.craete({
+    const newLesson = Lesson.create({
       title,
       description,
       dueDate,
