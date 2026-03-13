@@ -30,7 +30,7 @@ export class CreateCourseUseCase {
       return left(new ProfessorNotFoundError());
     }
 
-    const newCourse = Course.craete({
+    const newCourse = Course.create({
       name,
       code,
       slug: Slug.createFromText(name),
