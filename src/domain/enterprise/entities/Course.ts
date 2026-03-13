@@ -1,10 +1,11 @@
 import { Entity } from "../../../core/entitites/Entity";
 import type { UniqueEntityId } from "../../../core/entitites/UniqueEntityId";
+import type { Slug } from "./values-objects/Slug";
 
 type CourseProps = {
   name: string;
   code: string;
-  slug: string;
+  slug: Slug;
   professorId: UniqueEntityId;
 };
 
