@@ -4,7 +4,7 @@ import type { UniqueEntityId } from "../../../core/entitites/UniqueEntityId";
 type SubmissionProps = {
   lessionId: UniqueEntityId;
   studentId: UniqueEntityId;
-  submitted_at: Date;
+  submittedAt: Date;
   grade?: number;
   feedback?: string;
 };
