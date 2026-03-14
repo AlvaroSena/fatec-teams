@@ -5,7 +5,7 @@ import { StudentMapper } from "../../../domain/enterprise/mappers/StudentMapper"
 import { db } from "../";
 import { students } from "../schema";
 
-export class DrizzleStudensRepository implements StudentsRepository {
+export class DrizzleStudentsRepository implements StudentsRepository {
   async findById(id: string): Promise<Student | null> {
     const [student] = await db
       .select()

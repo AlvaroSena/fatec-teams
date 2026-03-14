@@ -26,10 +26,9 @@ export class RegisterStudentUseCase {
   }: RegisterStudentUseCaseRequest): Promise<RegisterStudentUseCaseResponse> {
     const [, domain] = email.split("@");
 
-    if (
-      !domain.includes("cps.sp.gov.br") ||
-      !domain.includes("fatec.sp.gov.br")
-    ) {
+    console.log(domain);
+
+    if (domain !== "cps.sp.gov.br" && domain !== "fatec.sp.gov.br") {
       return left(new InvalidEmailDomainError());
     }
 
