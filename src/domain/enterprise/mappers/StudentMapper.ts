@@ -1,6 +1,6 @@
 /** biome-ignore-all lint/complexity/noStaticOnlyClass: <explanation> */
 import type { InferSelectModel } from "drizzle-orm";
-import { UniqueEntityId } from "../../../core/entitites/UniqueEntityId";
+import { UniqueEntityId } from "../../../core/entities/UniqueEntityId";
 import type { students } from "../../../infra/drizzle/schema";
 import { Student } from "../entities/Student";
 

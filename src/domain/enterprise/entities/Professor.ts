@@ -1,5 +1,5 @@
-import { Entity } from "../../../core/entitites/Entity";
-import type { UniqueEntityId } from "../../../core/entitites/UniqueEntityId";
+import { Entity } from "../../../core/entities/Entity";
+import type { UniqueEntityId } from "../../../core/entities/UniqueEntityId";
 
 type ProfessorProps = {
   name: string;

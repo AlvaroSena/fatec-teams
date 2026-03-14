@@ -1,4 +1,4 @@
-import type { UniqueEntityId } from "../../../core/entitites/UniqueEntityId";
+import type { UniqueEntityId } from "../../../core/entities/UniqueEntityId";
 import type { Submission } from "../../enterprise/entities/Submission";
 
 export interface SubmissionsRepository {

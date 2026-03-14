@@ -54,16 +54,12 @@
         "courses_code_unique": {
           "name": "courses_code_unique",
           "nullsNotDistinct": false,
-          "columns": [
-            "code"
-          ]
+          "columns": ["code"]
         },
         "courses_slug_unique": {
           "name": "courses_slug_unique",
           "nullsNotDistinct": false,
-          "columns": [
-            "slug"
-          ]
+          "columns": ["slug"]
         }
       },
       "policies": {},
@@ -279,9 +275,7 @@
         "professors_email_unique": {
           "name": "professors_email_unique",
           "nullsNotDistinct": false,
-          "columns": [
-            "email"
-          ]
+          "columns": ["email"]
         }
       },
       "policies": {},
@@ -344,16 +338,12 @@
         "students_email_unique": {
           "name": "students_email_unique",
           "nullsNotDistinct": false,
-          "columns": [
-            "email"
-          ]
+          "columns": ["email"]
         },
         "students_RA_unique": {
           "name": "students_RA_unique",
           "nullsNotDistinct": false,
-          "columns": [
-            "ra"
-          ]
+          "columns": ["ra"]
         }
       },
       "policies": {},
