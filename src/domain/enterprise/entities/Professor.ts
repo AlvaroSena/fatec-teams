@@ -3,9 +3,10 @@ import type { UniqueEntityId } from "../../../core/entitites/UniqueEntityId";
 
 type ProfessorProps = {
   name: string;
-  avatarUrl: string;
+  avatarUrl?: string;
   email: string;
   password: string;
+  academicTitle?: string;
 };
 
 export class Professor extends Entity<ProfessorProps> {
