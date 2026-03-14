@@ -1,6 +1,7 @@
 import { hash } from "bcryptjs";
 import { type Either, left, right } from "../../../core/logic/Either";
 import { Professor } from "../../enterprise/entities/Professor";
+import { InvalidEmailDomainError } from "../errors/InvalidEmailDomainError";
 import { ProfessorAlreadyExistsError } from "../errors/ProfessorAlreadyExistsError";
 import type { ProfessorsRepository } from "../repositories/ProfessorsRepository";
 
@@ -12,7 +13,7 @@ type RegisterProfessorUseCaseRequest = {
 };
 
 type RegisterProfessorUseCaseResponse = Either<
-  ProfessorAlreadyExistsError,
+  ProfessorAlreadyExistsError | InvalidEmailDomainError,
   null
 >;
 
@@ -25,6 +26,15 @@ export class RegisterProfessorUseCase {
     password,
     academicTitle,
   }: RegisterProfessorUseCaseRequest): Promise<RegisterProfessorUseCaseResponse> {
+    const [, domain] = email.split("@");
+
+    if (
+      !domain.includes("cps.sp.gov.br") ||
+      !domain.includes("fatec.sp.gov.br")
+    ) {
+      return left(new InvalidEmailDomainError());
+    }
+
     const professorAlreadyExists =
       await this.professorsRepository.findByEmail(email);
 

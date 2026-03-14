@@ -1,6 +1,7 @@
 import { hash } from "bcryptjs";
 import { type Either, left, right } from "../../../core/logic/Either";
 import { Student } from "../../enterprise/entities/Student";
+import { InvalidEmailDomainError } from "../errors/InvalidEmailDomainError";
 import { StudentAlreadyExistsError } from "../errors/StudentAlreadyExistsError";
 import type { StudentsRepository } from "../repositories/StudentsRepository";
 
@@ -10,7 +11,10 @@ type RegisterStudentUseCaseRequest = {
   RA: string;
 };
 
-type RegisterStudentUseCaseResponse = Either<StudentAlreadyExistsError, null>;
+type RegisterStudentUseCaseResponse = Either<
+  StudentAlreadyExistsError | InvalidEmailDomainError,
+  null
+>;
 
 export class RegisterStudentUseCase {
   constructor(private studentsRepository: StudentsRepository) {}
@@ -20,6 +24,15 @@ export class RegisterStudentUseCase {
     email,
     RA,
   }: RegisterStudentUseCaseRequest): Promise<RegisterStudentUseCaseResponse> {
+    const [, domain] = email.split("@");
+
+    if (
+      !domain.includes("cps.sp.gov.br") ||
+      !domain.includes("fatec.sp.gov.br")
+    ) {
+      return left(new InvalidEmailDomainError());
+    }
+
     const studentAlreadyExists =
       await this.studentsRepository.findByEmail(email);
 
