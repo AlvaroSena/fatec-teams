@@ -2,7 +2,7 @@ import { Entity } from "../../../core/entitites/Entity";
 import type { UniqueEntityId } from "../../../core/entitites/UniqueEntityId";
 
 type SubmissionProps = {
-  lessionId: UniqueEntityId;
+  lessonId: UniqueEntityId;
   studentId: UniqueEntityId;
   submittedAt: Date;
   correctedAt?: Date;
@@ -11,8 +11,16 @@ type SubmissionProps = {
 };
 
 export class Submission extends Entity<SubmissionProps> {
+  set grade(grade: number) {
+    if (grade < 0 || grade > 10) {
+      throw new Error("A nota não pode ser menor que zero ou maior que 10.");
+    }
+
+    this.props.grade = grade;
+  }
+
   get lessionId() {
-    return this.props.lessionId;
+    return this.props.lessonId;
   }
 
   get studentId() {
@@ -27,7 +35,7 @@ export class Submission extends Entity<SubmissionProps> {
     return this.props.correctedAt;
   }
 
-  get grade() {
+  get grade(): number | undefined {
     return this.props.grade;
   }
 

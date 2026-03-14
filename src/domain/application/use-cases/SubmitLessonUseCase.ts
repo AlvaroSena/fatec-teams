@@ -38,7 +38,7 @@ export class SubmitLessonUseCase {
 
     const newSubmission = Submission.create({
       studentId: student.id,
-      lessionId: lesson.id,
+      lessonId: lesson.id,
       submittedAt: new Date(),
     });
 

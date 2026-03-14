@@ -31,7 +31,7 @@ export class CorrectSubmissionUseCase {
 
     const correctedSubmission = Submission.create(
       {
-        lessionId: wasLessonSubmited.id,
+        lessonId: wasLessonSubmited.id,
         studentId: wasLessonSubmited.studentId,
         submittedAt: wasLessonSubmited.submittedAt,
         correctedAt: new Date(),
