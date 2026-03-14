@@ -1,16 +1,48 @@
+import { eq } from "drizzle-orm";
 import type { StudentsRepository } from "../../../domain/application/repositories/StudentsRepository";
 import type { Student } from "../../../domain/enterprise/entities/Student";
+import { StudentMapper } from "../../../domain/enterprise/mappers/StudentMapper";
+import { db } from "../";
+import { students } from "../schema";
 
 export class DrizzleStudensRepository implements StudentsRepository {
-  findById(id: string): Promise<Student | null> {
-    throw new Error("Method not implemented.");
+  async findById(id: string): Promise<Student | null> {
+    const [student] = await db
+      .select()
+      .from(students)
+      .where(eq(students.id, id));
+
+    if (!student) {
+      return null;
+    }
+
+    return StudentMapper.toDomain(student);
   }
 
-  findByEmail(email: string): Promise<Student | null> {
-    throw new Error("Method not implemented.");
+  async findByEmail(email: string): Promise<Student | null> {
+    const [student] = await db
+      .select()
+      .from(students)
+      .where(eq(students.email, email));
+
+    if (!student) {
+      return null;
+    }
+
+    return StudentMapper.toDomain(student);
   }
 
-  save(student: Student): Promise<Student> {
-    throw new Error("Method not implemented.");
+  async save(student: Student): Promise<Student> {
+    const [raw] = await db
+      .insert(students)
+      .values({
+        name: student.name,
+        email: student.email,
+        password: student.password,
+        RA: student.RA,
+      })
+      .returning();
+
+    return StudentMapper.toDomain(raw);
   }
 }
