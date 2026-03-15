@@ -2,7 +2,7 @@ import type { NextFunction, Request, Response } from "express";
 import { verify } from "jsonwebtoken";
 import { DrizzleProfessorsRepository } from "../../drizzle/repositories/DrizzleProfessorsRepository";
 
-export async function auth(
+export async function ensureProfessorIsAuthenticated(
   request: Request,
   reply: Response,
   next: NextFunction,
