@@ -7,6 +7,14 @@ type EnrollmentProps = {
 };
 
 export class Enrollment extends Entity<EnrollmentProps> {
+  get courseId() {
+    return this.props.courseId;
+  }
+
+  get studentId() {
+    return this.props.studentId;
+  }
+
   static create(props: EnrollmentProps, id?: UniqueEntityId) {
     const enrollment = new Enrollment(props, id);
 

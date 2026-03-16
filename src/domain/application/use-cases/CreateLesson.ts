@@ -1,6 +1,6 @@
 import { type Either, left, right } from "../../../core/logic/Either";
 import { Lesson } from "../../enterprise/entities/Lesson";
-import { ProfessorNotFoundError } from "../errors/ProfessorNotFoundError";
+import { CourseNotFoundError } from "../errors/CourseNotFoundError";
 import type { CoursesRepository } from "../repositories/CoursesRepository";
 import type { LessonsRepository } from "../repositories/LessonsRepository";
 
@@ -11,7 +11,7 @@ type CreateLessonUseCaseRequest = {
   dueDate: Date;
 };
 
-type CreateLessonUseCaseResponse = Either<ProfessorNotFoundError, null>;
+type CreateLessonUseCaseResponse = Either<CourseNotFoundError, null>;
 
 export class CreateLessonUseCase {
   constructor(
@@ -28,7 +28,7 @@ export class CreateLessonUseCase {
     const course = await this.coursesRepository.findById(courseId);
 
     if (!course) {
-      return left(new ProfessorNotFoundError());
+      return left(new CourseNotFoundError());
     }
 
     const newLesson = Lesson.create({

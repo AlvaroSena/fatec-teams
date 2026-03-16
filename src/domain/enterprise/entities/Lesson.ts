@@ -9,6 +9,22 @@ type LessonProps = {
 };
 
 export class Lesson extends Entity<LessonProps> {
+  get courseId() {
+    return this.props.courseId;
+  }
+
+  get title() {
+    return this.props.title;
+  }
+
+  get description() {
+    return this.props.description;
+  }
+
+  get dueDate() {
+    return this.props.dueDate;
+  }
+
   static create(props: LessonProps, id?: UniqueEntityId) {
     const lesson = new Lesson(props, id);
 

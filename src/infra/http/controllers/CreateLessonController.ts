@@ -1,20 +1,49 @@
 import type { Controller } from "../../../core/infra/Controller";
-import type { HttpResponse } from "../../../core/infra/HttpResponse";
+import {
+  created,
+  fail,
+  type HttpResponse,
+  notFound,
+} from "../../../core/infra/HttpResponse";
+import type { CreateLessonUseCase } from "../../../domain/application/use-cases/CreateLesson";
 
 type CreateLessonControllerRequest = {
   courseId: string;
   title: string;
   description: string;
-  dueDate: Date;
+  dueDate: string;
 };
 
 export class CreateLessonController implements Controller {
+  constructor(private createLessonUseCase: CreateLessonUseCase) {}
+
   async handle({
     courseId,
     title,
     description,
     dueDate,
   }: CreateLessonControllerRequest): Promise<HttpResponse> {
-    throw new Error("Method not implemented.");
+    try {
+      const result = await this.createLessonUseCase.execute({
+        courseId,
+        title,
+        description,
+        dueDate: new Date(dueDate),
+      });
+
+      if (result.isLeft()) {
+        const error = result.value;
+
+        return notFound(error.message);
+      }
+
+      return created();
+    } catch (err) {
+      if (err instanceof Error) {
+        return fail(err);
+      }
+
+      return fail(new Error(String(err)));
+    }
   }
 }

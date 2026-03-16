@@ -4,7 +4,7 @@ import { DrizzleProfessorsRepository } from "../../drizzle/repositories/DrizzleP
 
 export async function ensureProfessorIsAuthenticated(
   request: Request,
-  reply: Response,
+  response: Response,
   next: NextFunction,
 ) {
   const authHeader = request.headers.authorization;
@@ -12,7 +12,7 @@ export async function ensureProfessorIsAuthenticated(
   const token = authHeader && authHeader.split(" ")[1];
 
   if (!token) {
-    return reply.status(401).json({ message: "Token is missing!" });
+    return response.status(401).json({ message: "Token is missing!" });
   }
 
   try {
@@ -22,12 +22,12 @@ export async function ensureProfessorIsAuthenticated(
     const professor = await professorsRepository.findById(payload.sub);
 
     if (!professor) {
-      return reply.status(401).json({ message: "Usuário não encontrado." });
+      return response.status(401).json({ message: "Usuário não encontrado." });
     }
 
     request.user = payload;
     next();
   } catch (error) {
-    return reply.status(500).json({ error });
+    return response.status(500).json({ error });
   }
 }
