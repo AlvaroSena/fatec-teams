@@ -1,6 +1,11 @@
 import type { Controller } from "../../../core/infra/Controller";
-import { ok, type HttpResponse } from "../../../core/infra/HttpResponse";
-import { CreateCourseUseCase } from "../../../domain/application/use-cases/CreateCourse";
+import {
+  created,
+  fail,
+  type HttpResponse,
+  notFound,
+} from "../../../core/infra/HttpResponse";
+import type { CreateCourseUseCase } from "../../../domain/application/use-cases/CreateCourse";
 
 type CreateCourseControllerRequest = {
   name: string;
@@ -14,14 +19,28 @@ export class CreateCourseController implements Controller {
   async handle({
     name,
     code,
-    userId: professorId
+    userId: professorId,
   }: CreateCourseControllerRequest): Promise<HttpResponse> {
-    console.log({
-      name,
-      code,
-      professorId
-    })
+    try {
+      const result = await this.createCourseUseCase.execute({
+        name,
+        code,
+        professorId,
+      });
 
-    return ok()
+      if (result.isLeft()) {
+        const error = result.value;
+
+        return notFound(error.message);
+      }
+
+      return created();
+    } catch (err) {
+      if (err instanceof Error) {
+        return fail(err);
+      }
+
+      return fail(new Error(String(err)));
+    }
   }
 }
