@@ -37,7 +37,9 @@ export class AuthenticateProfessorUseCase {
       return left(new InvalidEmailOrPasswordError());
     }
 
-    const token = sign({ sub: professor.id }, "my-secret", { expiresIn: "7d" });
+    const token = sign({ sub: professor.id.toString() }, "my-secret", {
+      expiresIn: "7d",
+    });
 
     return right({ token });
   }
