@@ -5,7 +5,7 @@ import {
   notFound,
   ok,
 } from "../../../core/infra/HttpResponse";
-import type { CorrectSubmissionUseCase } from "../../../domain/application/use-cases/CorrectSubmission";
+import type { CorrectSubmissionUseCase } from "../../../domain/application/use-cases/CorrectSubmissionUseCase";
 
 type CorrectSubmissionControllerRequest = {
   submissionId: string;

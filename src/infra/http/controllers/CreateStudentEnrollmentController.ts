@@ -5,7 +5,7 @@ import {
   type HttpResponse,
   notFound,
 } from "../../../core/infra/HttpResponse";
-import type { CreateStudentEnrollmentUseCase } from "../../../domain/application/use-cases/CreateStudentEnrollment";
+import type { CreateStudentEnrollmentUseCase } from "../../../domain/application/use-cases/CreateStudentEnrollmentUseCase";
 
 type CreateStudentEnrollmentControllerRequest = {
   courseId: string;

@@ -1,5 +1,5 @@
 import type { Controller } from "../../../core/infra/Controller";
-import { CreateStudentEnrollmentUseCase } from "../../../domain/application/use-cases/CreateStudentEnrollment";
+import { CreateStudentEnrollmentUseCase } from "../../../domain/application/use-cases/CreateStudentEnrollmentUseCase";
 import { DrizzleCoursesRepository } from "../../drizzle/repositories/DrizzleCoursesRepository";
 import { DrizzleEnrollmentsRepository } from "../../drizzle/repositories/DrizzleEnrollmentsRepository";
 import { DrizzleStudentsRepository } from "../../drizzle/repositories/DrizzleStudentsRepository";

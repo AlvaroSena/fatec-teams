@@ -1,5 +1,5 @@
 import type { Controller } from "../../../core/infra/Controller";
-import { CorrectSubmissionUseCase } from "../../../domain/application/use-cases/CorrectSubmission";
+import { CorrectSubmissionUseCase } from "../../../domain/application/use-cases/CorrectSubmissionUseCase";
 import { DrizzleSubmissionsRepository } from "../../drizzle/repositories/DrizzleSubmissionsRepository";
 import { CorrectSubmissionController } from "../controllers/CorrectSubmissionController";
 

@@ -1,5 +1,5 @@
 import type { Controller } from "../../../core/infra/Controller";
-import { CreateLessonUseCase } from "../../../domain/application/use-cases/CreateLesson";
+import { CreateLessonUseCase } from "../../../domain/application/use-cases/CreateLessonUseCase";
 import { DrizzleCoursesRepository } from "../../drizzle/repositories/DrizzleCoursesRepository";
 import { DrizzleLessonsRepository } from "../../drizzle/repositories/DrizzleLessonsRepository";
 import { CreateLessonController } from "../controllers/CreateLessonController";

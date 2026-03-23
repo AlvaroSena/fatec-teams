@@ -5,7 +5,7 @@ import {
   type HttpResponse,
   notFound,
 } from "../../../core/infra/HttpResponse";
-import type { CreateCourseUseCase } from "../../../domain/application/use-cases/CreateCourse";
+import type { CreateCourseUseCase } from "../../../domain/application/use-cases/CreateCourseUseCase";
 
 type CreateCourseControllerRequest = {
   name: string;
