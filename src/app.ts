@@ -1,9 +1,11 @@
+import cors from "cors";
 import express from "express";
 import swaggerUi from "swagger-ui-express";
 import { routes } from "./infra/http/routes";
 import { swaggerSetup } from "./infra/http/swagger";
 
 const app = express();
+app.use(cors());
 app.use(express.json());
 
 app.use("/v1", routes);
